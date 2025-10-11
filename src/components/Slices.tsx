@@ -8,12 +8,11 @@ export default function Slices() {
         height: "100%",
       }}
       className="flex flex-wrap"
-  >
-  <Slice angle={0} color="lime" />
-  <Slice angle={90} color="red" />
-  <Slice angle={270} color="yellow" />
-  <Slice angle={180} color="blue" />
-  </div>
-
+    >
+      <Slice angle={0} color="lime" />
+      <Slice angle={90} color="red" />
+      <Slice angle={270} color="yellow" />
+      <Slice angle={180} color="blue" />
+    </div>
   );
 }

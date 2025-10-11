@@ -1,7 +1,7 @@
 import "./slice.css";
 
-interface CounterProps{
-    score: number;
+interface CounterProps {
+  score: number;
 }
 
 export default function Counter(props: CounterProps) {
