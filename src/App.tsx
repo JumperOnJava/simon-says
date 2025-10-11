@@ -11,12 +11,12 @@ function App() {
     <>
       <div className="flex flex-col h-screen">
         <div>
-        <Button click={() => setPage("home")}>Start</Button>
-        <Button click={() => setPage("game")}>Game</Button>
-        <Button click={() => setPage("result")}>Result</Button>
+          <Button click={() => setPage("home")}>Start</Button>
+          <Button click={() => setPage("game")}>Game</Button>
+          <Button click={() => setPage("result")}>Result</Button>
         </div>
         <hr />
-        <div className="bg-gray-900 flex-1 text-white">
+        <div className="bg-gray-900 flex-1 text-white flex justify-center align-center">
         {
           page === "home" ? <Home /> : 
           page === "game" ? <Game /> :
