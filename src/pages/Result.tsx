@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Button from "../components/Button";
+import Title from "../components/Title";
 
 export default function Result() {
   const [score, setScore] = useState(0);
@@ -11,9 +12,9 @@ export default function Result() {
 
   return (
     <div className="flex flex-col items-center gap-8">
-      <div className="text-3xl">Your score:</div>
-      <div className="text-6xl font-bold">{score}</div>
-      <div className="text-xl">Good job</div>
+      <Title size={3}>Your score:</Title>
+      <Title size={6} className="font-bold">{score}</Title>
+      <Title size={1}>Good job</Title>
       <div>
         <Button>Home</Button>
         <Button>Restart</Button>
