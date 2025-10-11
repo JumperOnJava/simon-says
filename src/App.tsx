@@ -16,7 +16,7 @@ function App() {
           <Button click={() => setPage("result")}>Result</Button>
         </div>
         <hr />
-        <div className="bg-gray-900 flex-1 text-white flex justify-center align-center">
+        <div className="bg-gray-900 flex-1 text-white flex justify-center items-center">
         {
           page === "home" ? <Home /> : 
           page === "game" ? <Game /> :
