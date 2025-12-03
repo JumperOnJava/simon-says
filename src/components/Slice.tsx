@@ -11,16 +11,16 @@ export default function Slice(props: SliceProps) {
   return (
     <button
       onClick={props.onClick}
-      style={{
-        backgroundColor: props.active ? props.colorActive : props.colorInactive,
-        width: "50%",
-        height: "50%",
-        borderTopLeftRadius: "100%",
-        transform: `rotate(${props.angle}deg)`,
-        margin: 0,
-        padding: 0,
-      }}
-      className="cliceClickDarken"
+      style={
+        {
+          "--color-click": props.colorActive,
+          "--color-noclick": props.active
+            ? props.colorActive
+            : props.colorInactive,
+          "--angle": `${props.angle}deg`,
+        } as React.CSSProperties
+      }
+      className="slice"
     />
   );
 }

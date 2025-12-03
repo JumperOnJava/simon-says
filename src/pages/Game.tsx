@@ -29,7 +29,7 @@ export default function Game() {
   };
 
   if (useFirstRender()) {
-    createGameplay(gameContext);
+    createGameplay(gameContext, ()=>{});
   }
 
   return (

@@ -7,15 +7,19 @@ export default function createGameplay(
   endGameCallback: () => void
 ) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const emptyFunc = (_color: SliceColor) => {
+  function emptyFunc(_color: SliceColor) {
     console.log("called empty function");
-  };
+  }
 
-  const setInputHandler = (handler: (color: SliceColor) => void) => {
+  ////////////////////////////////
+
+  function setInputHandler(handler: (color: SliceColor) => void) {
     context.logicRef.current.actions.inputColor = handler;
-  };
+  }
 
-  const start = async () => {
+  ////////////////////////////////
+
+  async function start() {
     if (context.logicRef.current.phase !== "inactive") {
       console.log("Game is active already");
       return;
@@ -25,6 +29,8 @@ export default function createGameplay(
 
     let level = 1;
     const logic = context.logicRef.current;
+
+    ////////////////
 
     async function phaseDisplay() {
       logic.phase = "display";
@@ -59,31 +65,33 @@ export default function createGameplay(
       console.log(`finished displaying level ${level};`);
     }
 
+    ////////////////
+
     async function phaseInput(): Promise<boolean> {
       const combination = logic.combination;
 
       console.log(`started inputing level ${level};`);
       console.log(combination);
 
-      setInputHandler(emptyFunc);
-
       for (let i = 0; i < level; i++) {
         const expectedColor = combination[i];
         console.log(`required color: ${expectedColor}`);
 
-        const responseColor = await new Promise<SliceColor>((resolve) =>
-          setInputHandler(resolve)
-        );
+        const responseColor = await new Promise<SliceColor>(setInputHandler);
 
         if (responseColor !== expectedColor) {
           console.log(`failed ${responseColor} != ${expectedColor};`);
+          setInputHandler(emptyFunc);
           return false;
         }
       }
 
+      setInputHandler(emptyFunc);
       console.log(`finished inputing level ${level};`);
       return true;
     }
+
+    ////////////////
 
     while (true) {
       await phaseDisplay();
@@ -94,6 +102,8 @@ export default function createGameplay(
         console.log(`finished level ${level};`);
       } else {
         console.log(`failed level ${level};`);
+        endGameCallback();
+        break;
       }
 
       level++;
@@ -105,7 +115,7 @@ export default function createGameplay(
 
       logic.combination.push(randomSliceColor());
     }
-  };
+  }
 
   context.logicRef.current.actions.start = start;
 }
