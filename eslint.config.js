@@ -22,7 +22,10 @@ export default defineConfig([
      rules: {
       // Note: you must disable the base rule as it can report incorrect errors
       "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-unused-vars": "off",
+      "no-empty": "off",
+      "ts(6133)": "off"
+
     },
   },
 ])

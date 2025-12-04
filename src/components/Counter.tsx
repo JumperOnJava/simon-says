@@ -1,9 +1,9 @@
-import { useLevel } from "../hooks/useLevel";
+import { useScore } from "../hooks/useScore";
 import "./slice.css";
 import Title from "./Title";
 
 export default function Counter() {
-  const score = useLevel();
+  const score = useScore();
 
   return (
     <div className="flex flex-1 justify-center items-center flex-col">

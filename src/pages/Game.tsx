@@ -1,36 +1,20 @@
-import { useContext, useRef, useState } from "react";
+import { useState } from "react";
 import Pad from "../components/Pad";
-import {
-  GameContext,
-  type LogicGameContext,
-  type VisualGameState,
-} from "../types/GameState";
+import { GameContext, type GameState } from "../types/GameState";
 import { generateCombination } from "../utils/combination";
-import { useFirstRender } from "../hooks/useFirstRender";
-import createGameplay from "../gameplay/gameplay";
+import { useInactivePhase } from "../hooks/useInactivePhase";
 
 export default function Game() {
-  const [gameState, setVisualGameState] = useState<VisualGameState>({
-    activeSlice: null,
-    currentLevel: 1,
-  });
-  const logicRef = useRef<LogicGameContext>({
-    combination: generateCombination(10),
+  const [gameState, setGameState] = useState<GameState>({
+    combination: generateCombination(1),
+    inputCombination: [],
     phase: "inactive",
-    actions: {
-      start: () => {},
-      inputColor: () => {},
-    },
   });
-  const gameContext = {
-    logicRef: logicRef,
-    visual: gameState,
-    setVisual: setVisualGameState,
-  };
 
-  if (useFirstRender()) {
-    createGameplay(gameContext, ()=>{});
-  }
+  const gameContext = {
+    state: gameState,
+    setState: setGameState,
+  };
 
   return (
     <GameContext.Provider value={gameContext}>
@@ -40,13 +24,13 @@ export default function Game() {
 }
 
 function GameInner() {
-  const context = useContext(GameContext);
+  const start = useInactivePhase();
 
   return (
     <div className="justify-center align-middle flex flex-col gap-8">
       <button
         onClick={() => {
-          context.logicRef.current.actions.start();
+          start();
         }}
       >
         [Start]

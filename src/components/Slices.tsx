@@ -1,10 +1,11 @@
-import { useActiveSlice } from "../hooks/useActiveSlice";
 import Slice from "./Slice";
-import { useColorInput } from "../hooks/useColorInput";
+import { useInputPhase } from "../hooks/useInputPhase";
+import { useDisplayPhase } from "../hooks/useDisplayPhase";
 
 export default function Slices() {
-  const color = useActiveSlice();
-  const colorInput = useColorInput();
+  const color = useDisplayPhase();
+  const colorInput = useInputPhase();
+
   return (
     <>
       <div
