@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Pad from "../components/Pad";
-import { GameContext, type GameState } from "../types/GameState";
+import { GameContext, type GameState } from "../context/GameContext";
 import { generateCombination } from "../utils/combination";
 import { useInactivePhase } from "../hooks/useInactivePhase";
+import { useBasicNavigation } from "../context/PageContext";
 
 export default function Game() {
   const [gameState, setGameState] = useState<GameState>({
@@ -16,6 +17,12 @@ export default function Game() {
     setState: setGameState,
   };
 
+  const navigation = useBasicNavigation();
+  if (gameState.phase == "failed") {
+    //temporary solution
+    localStorage.setItem("rounds", (gameState.combination.length - 1).toString());
+    navigation.setPage("result");
+  }
   return (
     <GameContext.Provider value={gameContext}>
       <GameInner />

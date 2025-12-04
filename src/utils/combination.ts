@@ -1,4 +1,4 @@
-import { SliceColors } from "../types/GameState";
+import { SliceColors } from "../context/GameContext";
 
 export function generateCombination(length: number) {
   return [...Array(length)].map(randomSliceColor);

@@ -1,4 +1,4 @@
-import { type SliceColor } from "../types/GameState";
+import { type SliceColor } from "../context/GameContext";
 import { generateCombination, randomSliceColor } from "../utils/combination";
 import { useGameState } from "./useGameState";
 
@@ -22,7 +22,6 @@ export function useInputPhase() {
           newState.combination[lastIndex]
         ) {
           newState.phase = "failed";
-          newState.combination = generateCombination(0);
           return newState;
         }
 

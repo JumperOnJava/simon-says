@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { type SliceColor } from "../types/GameState";
+import { type SliceColor } from "../context/GameContext";
 import { usePhaseState } from "./usePhaseState";
 import { useCombination } from "./useCombination";
 
