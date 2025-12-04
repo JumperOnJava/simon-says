@@ -1,3 +1,13 @@
-.cliceClickDarken:active {
-  filter: brightness(80%);
+.slice {
+  background-color: var(--color-noclick);
+  width: 50%;
+  height: 50%;
+  border-top-left-radius: 100%;
+  transform: rotate(var(--angle));
+  margin: 0;
+  padding: 0;
+}
+
+.slice:active{
+  background-color: var(--color-click);
 }

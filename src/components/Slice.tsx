@@ -2,21 +2,25 @@ import "./slice.css";
 
 interface SliceProps {
   angle: number;
-  color: string;
+  colorActive: string;
+  colorInactive: string;
+  active: boolean;
+  onClick: () => void;
 }
 export default function Slice(props: SliceProps) {
   return (
     <button
-      style={{
-        backgroundColor: props.color,
-        width: "50%",
-        height: "50%",
-        borderTopLeftRadius: "100%",
-        transform: `rotate(${props.angle}deg)`,
-        margin: 0,
-        padding: 0,
-      }}
-      className="cliceClickDarken"
+      onClick={props.onClick}
+      style={
+        {
+          "--color-click": props.colorActive,
+          "--color-noclick": props.active
+            ? props.colorActive
+            : props.colorInactive,
+          "--angle": `${props.angle}deg`,
+        } as React.CSSProperties
+      }
+      className="slice"
     />
   );
 }

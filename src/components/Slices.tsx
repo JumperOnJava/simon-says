@@ -1,18 +1,49 @@
 import Slice from "./Slice";
+import { useInputPhase } from "../hooks/useInputPhase";
+import { useDisplayPhase } from "../hooks/useDisplayPhase";
 
 export default function Slices() {
+  const color = useDisplayPhase();
+  const colorInput = useInputPhase();
+
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-      }}
-      className="flex flex-wrap"
-    >
-      <Slice angle={0} color="lime" />
-      <Slice angle={90} color="red" />
-      <Slice angle={270} color="yellow" />
-      <Slice angle={180} color="blue" />
-    </div>
+    <>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+        className="flex flex-wrap"
+      >
+        <Slice
+          angle={0}
+          active={color == "lime"}
+          onClick={() => colorInput("lime")}
+          colorActive="lime"
+          colorInactive="#007f00"
+        />
+        <Slice
+          angle={90}
+          active={color == "red"}
+          onClick={() => colorInput("red")}
+          colorActive="red"
+          colorInactive="#7f0000"
+        />
+        <Slice
+          angle={270}
+          active={color == "yellow"}
+          onClick={() => colorInput("yellow")}
+          colorActive="yellow"
+          colorInactive="#7f7f00"
+        />
+        <Slice
+          angle={180}
+          active={color == "blue"}
+          onClick={() => colorInput("blue")}
+          colorActive="blue"
+          colorInactive="#00007f"
+        />
+      </div>
+    </>
   );
 }
