@@ -4,6 +4,7 @@ import { GameContext, type GameState } from "../context/GameContext";
 import { generateCombination } from "../utils/combination";
 import { useInactivePhase } from "../hooks/useInactivePhase";
 import { useBasicNavigation } from "../context/PageContext";
+import Button from "../components/Button";
 
 export default function Game() {
   const [gameState, setGameState] = useState<GameState>({
@@ -20,7 +21,10 @@ export default function Game() {
   const navigation = useBasicNavigation();
   if (gameState.phase == "failed") {
     //temporary solution
-    localStorage.setItem("rounds", (gameState.combination.length - 1).toString());
+    localStorage.setItem(
+      "score",
+      (gameState.combination.length - 1).toString()
+    );
     navigation.setPage("result");
   }
   return (
@@ -35,13 +39,15 @@ function GameInner() {
 
   return (
     <div className="justify-center align-middle flex flex-col gap-8">
-      <button
-        onClick={() => {
-          start();
-        }}
-      >
-        [Start]
-      </button>
+      <div className="flex justify-center text-2xl">
+        <Button
+          click={() => {
+            start();
+          }}
+        >
+          Start
+        </Button>
+      </div>
       <Pad />
     </div>
   );
