@@ -12,12 +12,14 @@ export interface GameContext {
 
 export interface GameState {
   phase: GamePhase;
+  score: number;
   combination: SliceColor[];
   inputCombination: SliceColor[];
 }
 
 export const GameContext = createContext<GameContext>({
   state: {
+    score: 0,
     combination: [],
     inputCombination: [],
     phase: "inactive",

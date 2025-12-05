@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Title from "../components/Title";
 import { useBasicNavigation } from "../context/PageContext";
@@ -9,6 +9,24 @@ export default function Home() {
   //Currently unimplemented
   const [speed, setSpeed] = useState(800);
   const [colorCount, setColorCount] = useState(1);
+
+  //моя спроба написати debounce
+  useEffect(() => {
+    const write = setTimeout(() => {
+      localStorage.setItem(
+        "difficulty",
+        JSON.stringify({
+          speed: speed,
+          colorsPerRound: colorCount,
+        })
+      );
+      console.log("saved localstorage");
+    }, 200);
+    return () => {
+      console.log("delayed localstorage");
+      clearTimeout(write);
+    };
+  }, [speed, colorCount]);
 
   return (
     <div className="justify-center align-middle flex flex-col w-64 gap-8">
@@ -31,7 +49,7 @@ export default function Home() {
           onChange={(e) => setSpeed(Number(e.target.value))}
           className="w-full"
         />
-        <p className="text-center text-sm mt-1">{speed} ms per second</p>
+        <p className="text-center text-sm mt-1">{speed} ms per color</p>
       </div>
 
       <div>

@@ -5,12 +5,15 @@ import { generateCombination } from "../utils/combination";
 import { useInactivePhase } from "../hooks/gameplay/phase/useInactivePhase";
 import Button from "../components/Button";
 import { GameOverModal } from "../components/GameOverModal";
+import { useDifficultySettings } from "../hooks/gameplay/useDifficultySettings";
 
 export default function Game() {
+  const difficulty = useDifficultySettings();
   const [gameState, setGameState] = useState<GameState>({
-    combination: generateCombination(1),
+    combination: generateCombination(difficulty.colorsPerRound),
     inputCombination: [],
     phase: "inactive",
+    score: 0,
   });
 
   const gameContext = {

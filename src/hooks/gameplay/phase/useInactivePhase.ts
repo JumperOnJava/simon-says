@@ -1,17 +1,11 @@
-import { randomSliceColor } from "../../../utils/combination";
-import { useGameState } from "../useGameState";
+import { usePhaseState } from "../usePhaseState";
 
 export function useInactivePhase(): () => void {
-  const [gameState, setGameState] = useGameState();
+  const [phase, setPhase] = usePhaseState();
 
-  if (gameState.phase == "inactive") {
+  if (phase == "inactive") {
     return () => {
-      //reset the game for playing
-      setGameState({
-        phase: "display",
-        inputCombination: [],
-        combination: [randomSliceColor()],
-      });
+      setPhase("display");
     };
   } else {
     return () => {};
