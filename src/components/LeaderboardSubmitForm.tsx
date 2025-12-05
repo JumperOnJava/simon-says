@@ -6,7 +6,6 @@ import Button from "./Button";
 import "../pages/Leaderboard.css";
 import { LeaderboardEntryComponent } from "./LeaderBoardEntry";
 import { useState } from "react";
-import { date } from "yup";
 
 export function LeaderboardSubmitForm() {
   //to be replaced by some global state
