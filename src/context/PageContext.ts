@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-export type Page = "home" | "game" | "result";
+export type Page = "home" | "game" | "leaderboard";
 
 interface PageContextType {
   page: Page;

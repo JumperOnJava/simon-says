@@ -1,4 +1,4 @@
-import type { GamePhase } from "../context/GameContext";
+import type { GamePhase } from "../../context/GameContext";
 import { useGameState } from "./useGameState";
 
 export function usePhaseState(): [GamePhase, (phase: GamePhase) => void] {

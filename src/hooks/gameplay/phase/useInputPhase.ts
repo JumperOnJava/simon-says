@@ -1,6 +1,6 @@
-import { type SliceColor } from "../context/GameContext";
-import { generateCombination, randomSliceColor } from "../utils/combination";
-import { useGameState } from "./useGameState";
+import { type GameState, type SliceColor } from "../../../context/GameContext";
+import { randomSliceColor } from "../../../utils/combination";
+import { useGameState } from "../useGameState";
 
 export function useInputPhase() {
   const [gameState, setGameState] = useGameState();
@@ -10,7 +10,7 @@ export function useInputPhase() {
   } else
     return function (color: SliceColor) {
       console.log("input color", color);
-      setGameState((state) => {
+      setGameState((state: GameState) => {
         const newState = { ...state };
 
         newState.inputCombination = [...newState.inputCombination, color];

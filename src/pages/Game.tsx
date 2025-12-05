@@ -2,9 +2,9 @@ import { useState } from "react";
 import Pad from "../components/Pad";
 import { GameContext, type GameState } from "../context/GameContext";
 import { generateCombination } from "../utils/combination";
-import { useInactivePhase } from "../hooks/useInactivePhase";
-import { useBasicNavigation } from "../context/PageContext";
+import { useInactivePhase } from "../hooks/gameplay/phase/useInactivePhase";
 import Button from "../components/Button";
+import { GameOverModal } from "../components/GameOverModal";
 
 export default function Game() {
   const [gameState, setGameState] = useState<GameState>({
@@ -18,18 +18,10 @@ export default function Game() {
     setState: setGameState,
   };
 
-  const navigation = useBasicNavigation();
-  if (gameState.phase == "failed") {
-    //temporary solution
-    localStorage.setItem(
-      "score",
-      (gameState.combination.length - 1).toString()
-    );
-    navigation.setPage("result");
-  }
   return (
     <GameContext.Provider value={gameContext}>
       <GameInner />
+      {gameState.phase == "failed" ? <GameOverModal></GameOverModal> : <></>}
     </GameContext.Provider>
   );
 }
@@ -38,7 +30,7 @@ function GameInner() {
   const start = useInactivePhase();
 
   return (
-    <div className="justify-center align-middle flex flex-col gap-8">
+    <div className="justify-center align-middle flex flex-col gap-8 relative">
       <div className="flex justify-center text-2xl">
         <Button
           click={() => {

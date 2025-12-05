@@ -1,6 +1,6 @@
 import Slice from "./Slice";
-import { useInputPhase } from "../hooks/useInputPhase";
-import { useDisplayPhase } from "../hooks/useDisplayPhase";
+import { useInputPhase } from "../hooks/gameplay/phase/useInputPhase";
+import { useDisplayPhase } from "../hooks/gameplay/phase/useDisplayPhase";
 
 export default function Slices() {
   const color = useDisplayPhase();

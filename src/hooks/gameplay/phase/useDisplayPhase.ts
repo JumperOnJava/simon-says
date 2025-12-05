@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { type SliceColor } from "../context/GameContext";
-import { usePhaseState } from "./usePhaseState";
-import { useCombination } from "./useCombination";
+import { type SliceColor } from "../../../context/GameContext";
+import { usePhaseState } from "../usePhaseState";
+import { useCombination } from "../useCombination";
 
 export function useDisplayPhase(): SliceColor | null {
   const [phase, setPhase] = usePhaseState();
