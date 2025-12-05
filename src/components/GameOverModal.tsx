@@ -12,12 +12,16 @@ function GameOverModalInner() {
   const navigation = useBasicNavigation();
   const failedPhase = useFailedPhase();
 
+  
+
   return (
     <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center flex-col">
       <div className="absolute opacity-30 bg-black top-0 left-0 w-full h-full -z-10 " />
       <div className="bg-gray-300 p-8">
-        <Title size={4}>Game Over</Title>
         <div className="flex flex-col items-center gap-4">
+          <Title size={4} className="font-bold">
+            Game Over
+          </Title>
           <Title size={2}>Your score:</Title>
           <Title size={4} className="font-bold">
             {failedPhase.score}

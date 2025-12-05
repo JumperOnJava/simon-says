@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Game from "./pages/Game";
 import Home from "./pages/Home";
-import LeaderBoard from "./pages/Leaderboard";
+import Leaderboard from "./pages/Leaderboard";
 import {
   PageContext,
   useBasicNavigation,
@@ -26,7 +26,7 @@ function AppInner() {
       <div className="flex flex-col h-screen">
 
         <div className="bg-gray-900 flex-1 text-white flex justify-center items-center">
-          {page === "home" ? <Home /> : page === "game" ? <Game /> : <LeaderBoard />}
+          {page === "home" ? <Home /> : page === "game" ? <Game /> : <Leaderboard />}
         </div>
       </div>
     </>

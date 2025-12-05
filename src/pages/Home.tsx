@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import Title from "../components/Title";
 import { useBasicNavigation } from "../context/PageContext";
+import { useDifficultySettings } from "../hooks/gameplay/useDifficultySettings";
 
 export default function Home() {
   const navigation = useBasicNavigation();
 
-  //Currently unimplemented
-  const [speed, setSpeed] = useState(800);
-  const [colorCount, setColorCount] = useState(1);
+  const difficulty = useDifficultySettings();
+
+  const [speed, setSpeed] = useState(difficulty.speed);
+  const [colorCount, setColorCount] = useState(difficulty.colorsPerRound);
 
   //моя спроба написати debounce
   useEffect(() => {
