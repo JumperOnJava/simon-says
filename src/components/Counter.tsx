@@ -1,4 +1,4 @@
-import { useScore } from "../hooks/useScore";
+import { useScore } from "../hooks/gameplay/useScore";
 import "./slice.css";
 import Title from "./Title";
 

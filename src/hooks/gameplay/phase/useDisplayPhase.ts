@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { type SliceColor } from "../context/GameContext";
-import { usePhaseState } from "./usePhaseState";
-import { useCombination } from "./useCombination";
+import { type SliceColor } from "../../../context/GameContext";
+import { usePhaseState } from "../usePhaseState";
+import { useCombination } from "../useCombination";
+import { useDifficultySettings } from "../useDifficultySettings";
 
 export function useDisplayPhase(): SliceColor | null {
   const [phase, setPhase] = usePhaseState();
   const combination = useCombination();
+  const difficulty = useDifficultySettings();
 
   const [activeSlice, setActiveSlice] = useState<SliceColor | null>(null);
   const running = useRef(false);
@@ -18,6 +20,9 @@ export function useDisplayPhase(): SliceColor | null {
     let targetTime = 0;
     const timeouts: number[] = [];
 
+    const colorTime = difficulty.speed * (3 / 4);
+    const inactiveTime = difficulty.speed * (1 / 4);
+
     timeouts.push(setTimeout(() => setActiveSlice(null), targetTime));
     targetTime += 500;
 
@@ -25,10 +30,10 @@ export function useDisplayPhase(): SliceColor | null {
       const color = combination[i];
 
       timeouts.push(setTimeout(() => setActiveSlice(color), targetTime));
-      targetTime += 500;
+      targetTime += colorTime;
 
       timeouts.push(setTimeout(() => setActiveSlice(null), targetTime));
-      targetTime += 200;
+      targetTime += inactiveTime;
     }
 
     timeouts.push(
@@ -40,6 +45,7 @@ export function useDisplayPhase(): SliceColor | null {
     );
 
     return () => {};
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, combination, setPhase]);
 
   return activeSlice;
