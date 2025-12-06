@@ -2,17 +2,15 @@ import { createPortal } from "react-dom";
 import { useFailedPhase } from "../hooks/gameplay/phase/useFailedPhase";
 import Button from "./Button";
 import Title from "./Title";
-import { useBasicNavigation } from "../context/PageContext";
+import { useState } from "react";
+import { Link } from "react-router";
 
 export function GameOverModal() {
   return createPortal(<GameOverModalInner />, document.body);
 }
 
 function GameOverModalInner() {
-  const navigation = useBasicNavigation();
   const failedPhase = useFailedPhase();
-
-  
 
   return (
     <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center flex-col">
@@ -28,11 +26,13 @@ function GameOverModalInner() {
           </Title>
           <Title size={2}>Good job</Title>
           <div className="flex gap-4 mt-4">
-            <Button click={() => navigation.setPage("home")}>Home</Button>
+            <Button click={() => {}}>
+              <Link to="/">Home</Link>
+            </Button>
             <Button click={() => failedPhase.restart()}>Restart</Button>
           </div>
-          <Button click={() => navigation.setPage("leaderboard")}>
-            Submit leaderboard entry
+          <Button click={() => {}}>
+            <Link to="/leaderboard">Submit leaderboard entry</Link>
           </Button>
         </div>
       </div>

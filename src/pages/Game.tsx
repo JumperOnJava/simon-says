@@ -6,6 +6,7 @@ import { useInactivePhase } from "../hooks/gameplay/phase/useInactivePhase";
 import Button from "../components/Button";
 import { GameOverModal } from "../components/GameOverModal";
 import { useDifficultySettings } from "../hooks/gameplay/useDifficultySettings";
+import "./Page.css";
 
 export default function Game() {
   const difficulty = useDifficultySettings();
@@ -33,17 +34,19 @@ function GameInner() {
   const start = useInactivePhase();
 
   return (
-    <div className="justify-center align-middle flex flex-col gap-8 relative">
-      <div className="flex justify-center text-2xl">
-        <Button
-          click={() => {
-            start();
-          }}
-        >
-          Start
-        </Button>
+    <div className="fullscreen-centered">
+      <div className="justify-center align-middle flex flex-col gap-8 relative">
+        <div className="flex justify-center text-2xl">
+          <Button
+            click={() => {
+              start();
+            }}
+          >
+            Start
+          </Button>
+        </div>
+        <Pad />
       </div>
-      <Pad />
     </div>
   );
 }

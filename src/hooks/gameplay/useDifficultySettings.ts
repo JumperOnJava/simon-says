@@ -1,4 +1,4 @@
-import type { DifficultySettings } from "../../types/difficulty";
+import type { DifficultySettings } from "../../types/DifficultySettings";
 
 export function useDifficultySettings() : DifficultySettings {
   return {

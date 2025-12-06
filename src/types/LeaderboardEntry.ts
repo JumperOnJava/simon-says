@@ -3,9 +3,9 @@ export interface LeaderboardEntry {
 
   score: number;
 
-  date?: string;
+  date: string;
 
-  id?: string;
+  id: string;
 
   emoji?: string;
 
