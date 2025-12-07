@@ -1,5 +1,5 @@
 interface TitleProps {
-  size: 1 | 2 | 3 | 4;
+  size: number;
   className?: string;
   children: React.ReactNode;
 }
@@ -14,7 +14,10 @@ export default function Title(props: TitleProps) {
 
   return (
     <span
-      className={`text-${stylesize}xl ${props.className || ""}`}
+      style={{
+        fontSize: `${props.size * 0.25 + 1.25}rem`,
+      }}
+      className={`${props.className || ""}`}
       children={props.children}
     />
   );

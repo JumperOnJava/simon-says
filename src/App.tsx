@@ -6,12 +6,20 @@ import Submission from "./pages/Submission";
 import Submit from "./pages/Submit";
 import NotFound from "./pages/NotFound";
 import store from "./store/store";
-import { Provider } from 'react-redux'
+import { Provider } from "react-redux";
+import { useColorScheme } from "./hooks/useColorSchemes";
 
 function App() {
   return (
     <Provider store={store}>
+      <AppInner />
+    </Provider>
+  );
+}
 
+function AppInner() {
+  useColorScheme();
+  return (
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
@@ -22,7 +30,6 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
-    </Provider>
   );
 }
 

@@ -3,10 +3,11 @@ import Button from "../components/Button";
 import Title from "../components/Title";
 import { useDifficultySettings } from "../hooks/gameplay/useDifficultySettings";
 import "./Page.css";
-import "./Home.css";
+import "../styles/Icon.css";
 import { Link } from "react-router";
 import store from "../store/store";
 import * as difficultySettings from  "../store/difficultySettingsSlice" ;
+import { SiteSettings } from "../components/SiteSettings";
 
 export default function Home() {
   const difficulty = useDifficultySettings();
@@ -30,7 +31,7 @@ export default function Home() {
   return (
     <>
     <div className="absolute top-0 l-0">
-      1
+      <SiteSettings />
     </div>
     <div className="fullscreen-centered">
       <div className="justify-center align-middle flex flex-col w-64 gap-8">
@@ -76,14 +77,14 @@ export default function Home() {
         <div className="flex flex-col">
           <Button click={() => {}}>
             <Link to="/play">
-              <Title size={2} className="block mb-1">
+              <Title size={2} className="block">
                 Play game
               </Title>
             </Link>
           </Button>
           <Button click={() => {}}>
             <Link to="/leaderboard">
-              <Title size={1} className="block mb-1">
+              <Title size={1} className="block">
                 Leaderboard
               </Title>
             </Link>

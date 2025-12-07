@@ -1,3 +1,25 @@
+:root {
+  --color-lime-active: hsl(120, 100%, 75%);
+  --color-lime-inactive: rgb(0, 192, 0);
+  --color-red-active: hsl(0, 100%, 75%);  
+  --color-red-inactive: rgb(192, 0, 0);
+  --color-yellow-active: hsl(60, 100%, 75%);
+  --color-yellow-inactive: rgb(192, 192, 0);
+  --color-blue-active: hsl(240, 100%, 75%);
+  --color-blue-inactive: rgb(0, 0, 192);
+}
+
+:root.dark {
+  --color-lime-active: lime;
+  --color-lime-inactive: #007f00;
+  --color-red-active: red;
+  --color-red-inactive: #7f0000;
+  --color-yellow-active: yellow;
+  --color-yellow-inactive: #7f7f00;
+  --color-blue-active: blue;
+  --color-blue-inactive: #00007f;
+}
+
 .slice {
   background-color: var(--color-noclick);
   width: 50%;
