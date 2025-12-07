@@ -1,35 +1,23 @@
-import { useState } from "react";
-import Game from "./pages/Game";
+import { BrowserRouter, Route, Routes } from "react-router";
 import Home from "./pages/Home";
+import Game from "./pages/Game";
 import Leaderboard from "./pages/Leaderboard";
-import {
-  PageContext,
-  useBasicNavigation,
-  type Page,
-} from "./context/PageContext";
+import Submission from "./pages/Submission";
+import Submit from "./pages/Submit";
+import NotFound from "./pages/NotFound";
 
 function App() {
-  const [page, setPage] = useState<Page>("home");
-
   return (
-    <PageContext.Provider value={{ page, setPage }}>
-      <AppInner />
-    </PageContext.Provider>
-  );
-}
-
-function AppInner() {
-  const navigation = useBasicNavigation();
-  const page = navigation.page;
-  return (
-    <>
-      <div className="flex flex-col h-screen">
-
-        <div className="bg-gray-900 flex-1 text-white flex justify-center items-center">
-          {page === "home" ? <Home /> : page === "game" ? <Game /> : <Leaderboard />}
-        </div>
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="play" element={<Game />} />
+        <Route path="leaderboard" element={<Leaderboard />} />
+        <Route path="submit" element={<Submit />} />
+        <Route path="submission/:uuid" element={<Submission />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

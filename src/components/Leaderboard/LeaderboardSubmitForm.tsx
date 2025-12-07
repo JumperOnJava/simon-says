@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
-import type { LeaderboardEntry } from "../types/LeaderboardEntry";
-import Title from "./Title";
+import type { LeaderboardEntry } from "../../types/LeaderboardEntry";
+import Title from "../Title";
 import emojiRegex from "emoji-regex";
-import Button from "./Button";
-import "../pages/Leaderboard.css";
-import { LeaderboardEntryComponent } from "./LeaderBoardEntry";
+import Button from "../Button";
+import "../../styles/Leaderboard.css";
+import { LeaderboardEntryComponent } from "./LeaderboardEntryComponent";
 import { useState } from "react";
 
 export function LeaderboardSubmitForm() {
