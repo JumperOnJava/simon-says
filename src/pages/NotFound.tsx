@@ -1,10 +1,10 @@
 import "./Page.css";
-import Title from "../components/Title";
+import PathError from "../components/PathError";
 
 export default function Submit() {
   return (
     <div className="fullscreen-centered">
-      <Title size={4}>Page not found</Title>
+      <PathError>Page not found</PathError>
     </div>
   );
 }

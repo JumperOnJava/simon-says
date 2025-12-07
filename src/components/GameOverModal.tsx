@@ -3,7 +3,7 @@ import { useFailedPhase } from "../hooks/gameplay/phase/useFailedPhase";
 import Button from "./Button";
 import Title from "./Title";
 import { Link } from "react-router";
-import "./GameOverModal.css"
+import "./GameOverModal.css";
 
 export function GameOverModal() {
   return createPortal(<GameOverModalInner />, document.body);
@@ -32,7 +32,13 @@ function GameOverModalInner() {
             <Button click={() => failedPhase.restart()}>Restart</Button>
           </div>
           <Button click={() => {}}>
-            <Link to="/submit">Submit leaderboard entry</Link>
+            <Link
+              to={`/submit?score=${
+                failedPhase.score
+              }&id=${crypto.randomUUID()}`}
+            >
+              Submit leaderboard entry
+            </Link>
           </Button>
         </div>
       </div>

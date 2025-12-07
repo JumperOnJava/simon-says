@@ -1,3 +1,4 @@
+import type { Leaderboard } from "../types/Leaderboard";
 import type { LeaderboardEntry } from "../types/LeaderboardEntry";
 import { emojis } from "./emoji";
 import { SeedRandom } from "./random";
@@ -10,7 +11,7 @@ export function firstGenerateLeaderboard()   {
   }
 
   const ids = Array.from({ length: 10 }, () => crypto.randomUUID());
-  const database: Record<string, LeaderboardEntry> = {};
+  const database: Leaderboard = {};
 
   for (const id of ids) {
     database[id] = entryFromId(id);

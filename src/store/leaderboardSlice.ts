@@ -2,9 +2,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Leaderboard } from "../types/Leaderboard";
 import type { LeaderboardEntry } from "../types/LeaderboardEntry";
 
-const initialState = {
-  entries: {} as Leaderboard,
-};
+const initialState: Leaderboard = {};
 
 const leaderboardSlice = createSlice({
   name: "leaderboard",
@@ -12,10 +10,10 @@ const leaderboardSlice = createSlice({
   reducers: {
     setEntry: (state, action: PayloadAction<LeaderboardEntry>) => {
       const entry = action.payload;
-      state.entries[entry.id] = entry;
+      state[entry.id] = entry;
     },
   },
 });
 
-export const { setEntry: addEntry } = leaderboardSlice.actions;
+export const { setEntry } = leaderboardSlice.actions;
 export default leaderboardSlice.reducer;

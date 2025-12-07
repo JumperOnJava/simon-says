@@ -4,25 +4,23 @@ import Title from "../Title";
 import emojiRegex from "emoji-regex";
 import Button from "../Button";
 import "../../styles/Leaderboard.css";
-import { LeaderboardEntryComponent } from "./LeaderboardEntryComponent";
-import { useState } from "react";
+import store from "../../store/store";
+import { setEntry } from "../../store/leaderboardSlice";
+import { useNavigate } from "react-router";
 
-export function LeaderboardSubmitForm() {
-  //to be replaced by some global state
-  const [score] = useState(Math.round(Math.random()*10));
-
-  const [leaderboardEntry, setLeaderBoardEntry] =
-    useState<LeaderboardEntry | null>(null);
+export function LeaderboardSubmitForm(props: { score: number; id: string }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LeaderboardEntry>();
 
+  const nav = useNavigate();
   const onSubmit = (data: LeaderboardEntry) => {
-    submitLeaderboard(data);
-    setLeaderBoardEntry(data);
+    store.dispatch(setEntry(data));
+    nav(`/submission/${props.id}`);
   };
+
   return (
     <div className="flex justify-center flex-col">
       <div className="submit-entry">
@@ -83,15 +81,15 @@ export function LeaderboardSubmitForm() {
                 },
               })}
             />
-            <input {...register("score", { value: score })} type="hidden" />
+            <input
+              {...register("score", { value: props.score })}
+              type="hidden"
+            />
             <input
               {...register("date", { value: new Date().toISOString() })}
               type="hidden"
             />
-            <input
-              {...register("id", { value: crypto.randomUUID() })}
-              type="hidden"
-            />
+            <input {...register("id", { value: props.id })} type="hidden" />
           </div>
           {errors.emoji && (
             <span className="error">{errors.emoji.message}</span>
@@ -101,25 +99,12 @@ export function LeaderboardSubmitForm() {
           )}
 
           <Title size={1} className="score-label">
-            Score: {score}
+            Score: {props.score}
           </Title>
 
           <Button>Submit</Button>
         </form>
       </div>
-      {leaderboardEntry ? (
-        <>
-          <Title size={1}>Submitted entry:</Title>
-          <LeaderboardEntryComponent entry={leaderboardEntry} />
-        </>
-      ) : (
-        <>
-          <Title size={1}>Entry not submitted</Title>
-        </>
-      )}
     </div>
   );
-}
-function submitLeaderboard(arg0: LeaderboardEntry) {
-  console.log(arg0);
 }
