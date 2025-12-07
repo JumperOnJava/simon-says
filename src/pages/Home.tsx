@@ -72,14 +72,22 @@ export default function Home() {
             +{colorCount} color(s) per round
           </p>
         </div>
-
-        <Button click={() => {}}>
-          <Link to="/play">
-            <Title size={2} className="block mb-1">
-              Play game
-            </Title>
-          </Link>
-        </Button>
+        <div className="flex flex-col">
+          <Button click={() => {}}>
+            <Link to="/play">
+              <Title size={2} className="block mb-1">
+                Play game
+              </Title>
+            </Link>
+          </Button>
+          <Button click={() => {}}>
+            <Link to="/leaderboard">
+              <Title size={1} className="block mb-1">
+                Leaderboard
+              </Title>
+            </Link>
+          </Button>
+        </div>
       </div>
     </div>
   );

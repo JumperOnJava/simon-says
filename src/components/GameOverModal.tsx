@@ -32,7 +32,7 @@ function GameOverModalInner() {
             <Button click={() => failedPhase.restart()}>Restart</Button>
           </div>
           <Button click={() => {}}>
-            <Link to="/leaderboard">Submit leaderboard entry</Link>
+            <Link to="/submit">Submit leaderboard entry</Link>
           </Button>
         </div>
       </div>
