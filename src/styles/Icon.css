@@ -1,0 +1,8 @@
+.logo-image {
+  filter: none;
+}
+
+
+:root.dark .logo-image {
+  filter: invert(1);
+}

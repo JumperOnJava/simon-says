@@ -1,4 +1,11 @@
 :root {
+  --btn-bg: hsl(356, 95%, 61%);
+  --btn-bg-hover: hsl(356, 100%, 74%);
+  --btn-bg-active: hsl(356, 100%, 81%);
+  --btn-text: #ffffff;
+}
+
+:root.dark {
   --btn-bg: #0f766e;
   --btn-bg-hover: #115e59;
   --btn-bg-active: #134e4a;
@@ -9,8 +16,7 @@
   border-radius: 0.125rem;
   background-color: var(--btn-bg);
   margin: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-inline: 0.5rem;
   color: var(--btn-text);
   font-family: sans-serif;
 }

@@ -1,0 +1,9 @@
+:root{
+    --counter-bg: #FFFFFF
+}
+:root.dark{
+    --counter-bg: oklch(37.3% 0.034 259.733)
+}
+.counter-color{
+    background-color: var(--counter-bg);
+}

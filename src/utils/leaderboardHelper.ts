@@ -1,23 +1,21 @@
+import type { Leaderboard } from "../types/Leaderboard";
 import type { LeaderboardEntry } from "../types/LeaderboardEntry";
 import { emojis } from "./emoji";
 import { SeedRandom } from "./random";
 
-export function firstGenerateLeaderboard() {
-  const storage = localStorage.getItem("leaderboard");
-  if (storage) {
-    return;
-  }
 
-  const ids = [...Array(10)].map(() => crypto.randomUUID());
-
-  const database = {} as any;
+export function firstGenerateLeaderboard()   {
+  
+  console.log("created leaderboard")
+  const ids = Array.from({ length: 10 }, () => crypto.randomUUID());
+  const database: Leaderboard = {};
 
   for (const id of ids) {
     database[id] = entryFromId(id);
   }
-
-  localStorage.setItem("leaderboard", JSON.stringify(database));
+  return database;
 }
+
 
 function entryFromId(id: string = ""): LeaderboardEntry {
   const random = new SeedRandom(id);

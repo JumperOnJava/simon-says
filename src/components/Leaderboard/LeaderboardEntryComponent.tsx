@@ -7,6 +7,7 @@ interface LeaderboardEntryProps {
 }
 
 export function LeaderboardEntryComponent({ entry }: LeaderboardEntryProps) {
+  console.log(entry, typeof(entry))
   return (
     <div className="leaderboard-entry" style={{ borderColor: `#${entry.borderColor}` }}>
       <div className="leaderboard-user">

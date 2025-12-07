@@ -1,6 +1,10 @@
-:root {
+:root.dark {
   --fs-bg: #111827;
   --fs-text: #ffffff;
+}
+:root {
+  --fs-bg: #d7e3ff;
+  --fs-text: #1f2d4a;
 }
 
 .fullscreen-centered {

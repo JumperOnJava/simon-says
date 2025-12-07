@@ -15,34 +15,10 @@ export default function Slices() {
         }}
         className="flex flex-wrap"
       >
-        <Slice
-          angle={0}
-          active={color == "lime"}
-          onClick={() => colorInput("lime")}
-          colorActive="lime"
-          colorInactive="#007f00"
-        />
-        <Slice
-          angle={90}
-          active={color == "red"}
-          onClick={() => colorInput("red")}
-          colorActive="red"
-          colorInactive="#7f0000"
-        />
-        <Slice
-          angle={270}
-          active={color == "yellow"}
-          onClick={() => colorInput("yellow")}
-          colorActive="yellow"
-          colorInactive="#7f7f00"
-        />
-        <Slice
-          angle={180}
-          active={color == "blue"}
-          onClick={() => colorInput("blue")}
-          colorActive="blue"
-          colorInactive="#00007f"
-        />
+        <Slice angle={0} active={color} onClick={colorInput} color="lime" />
+        <Slice angle={90} active={color} onClick={colorInput} color="red" />
+        <Slice angle={270} active={color} onClick={colorInput} color="yellow" />
+        <Slice angle={180} active={color} onClick={colorInput} color="blue" />
       </div>
     </>
   );

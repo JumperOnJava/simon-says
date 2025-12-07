@@ -1,22 +1,27 @@
+import type { SliceColor } from "../context/GameContext";
+import { useSound } from "../hooks/useSound";
 import "./slice.css";
 
 interface SliceProps {
   angle: number;
-  colorActive: string;
-  colorInactive: string;
-  active: boolean;
-  onClick: () => void;
+  color: SliceColor;
+  active: SliceColor | null;
+  onClick: (color: SliceColor) => void;
 }
 export default function Slice(props: SliceProps) {
+  const playSound = useSound(`/beep_${props.color}.mp3`);
   return (
     <button
-      onClick={props.onClick}
+      onClick={() => {
+        playSound();
+        return props.onClick(props.color);
+      }}
       style={
         {
-          "--color-click": props.colorActive,
-          "--color-noclick": props.active
-            ? props.colorActive
-            : props.colorInactive,
+          "--color-click": `var(--color-${props.color}-active)`,
+          "--color-noclick": `var(--color-${props.color}-${
+            props.active == props.color ? "active" : "inactive"
+          })`,
           "--angle": `${props.angle}deg`,
         } as React.CSSProperties
       }
