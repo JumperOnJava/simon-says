@@ -3,6 +3,7 @@ import { type SliceColor } from "../../../context/GameContext";
 import { usePhaseState } from "../usePhaseState";
 import { useCombination } from "../useCombination";
 import { useDifficultySettings } from "../useDifficultySettings";
+import { useSound } from "../../useSound";
 
 export function useDisplayPhase(): SliceColor | null {
   const [phase, setPhase] = usePhaseState();
@@ -11,6 +12,13 @@ export function useDisplayPhase(): SliceColor | null {
 
   const [activeSlice, setActiveSlice] = useState<SliceColor | null>(null);
   const running = useRef(false);
+
+  const colorSounds = {
+    lime: useSound("/beep_lime.mp3"),
+    red: useSound("/beep_red.mp3"),
+    blue: useSound("/beep_blue.mp3"),
+    yellow: useSound("/beep_yellow.mp3"),
+  } as { [key: SliceColor]: () => void };
 
   useEffect(() => {
     if (phase !== "display" || running.current) return;
@@ -29,7 +37,12 @@ export function useDisplayPhase(): SliceColor | null {
     for (let i = 0; i < combination.length; i++) {
       const color = combination[i];
 
-      timeouts.push(setTimeout(() => setActiveSlice(color), targetTime));
+      timeouts.push(
+        setTimeout(() => {
+          colorSounds[color]();
+          return setActiveSlice(color);
+        }, targetTime)
+      );
       targetTime += colorTime;
 
       timeouts.push(setTimeout(() => setActiveSlice(null), targetTime));
@@ -45,7 +58,7 @@ export function useDisplayPhase(): SliceColor | null {
     );
 
     return () => {};
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, combination, setPhase]);
 
   return activeSlice;
