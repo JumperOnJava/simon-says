@@ -1,8 +1,9 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Leaderboard } from "../types/Leaderboard";
 import type { LeaderboardEntry } from "../types/LeaderboardEntry";
+import { firstGenerateLeaderboard } from "../utils/leaderboardHelper";
 
-const initialState: Leaderboard = {};
+const initialState: Leaderboard = firstGenerateLeaderboard();;
 
 const leaderboardSlice = createSlice({
   name: "leaderboard",

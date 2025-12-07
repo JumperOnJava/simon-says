@@ -16,7 +16,7 @@ export default function Submit() {
   return (
     <div className="fullscreen-centered">
       {entry ? (
-        <PathError>Entry already exists</PathError>
+        <PathError>Entry already sumbitted</PathError>
       ) : isNaN(scoreNumber) || queryUUID == null ? (
         <PathError>Invalid parameters</PathError>
       ) : (

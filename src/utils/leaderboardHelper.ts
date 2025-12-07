@@ -5,19 +5,15 @@ import { SeedRandom } from "./random";
 
 
 export function firstGenerateLeaderboard()   {
-  const storage = localStorage.getItem("leaderboard");
-  if (storage) {
-    return;
-  }
-
+  
+  console.log("created leaderboard")
   const ids = Array.from({ length: 10 }, () => crypto.randomUUID());
   const database: Leaderboard = {};
 
   for (const id of ids) {
     database[id] = entryFromId(id);
   }
-
-  localStorage.setItem("leaderboard", JSON.stringify(database));
+  return database;
 }
 
 
