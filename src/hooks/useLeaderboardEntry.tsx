@@ -4,5 +4,5 @@ import { useLeaderboard } from "./useLeaderboard";
 
 export function useLeaderboardEntry(uuid: string) : LeaderboardEntry {
   const leaderboard = useLeaderboard();
-  return leaderboard[uuid];
+  return leaderboard.entries[uuid];
 }

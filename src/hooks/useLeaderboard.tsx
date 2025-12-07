@@ -1,6 +1,6 @@
+import { useSelector } from "react-redux";
+import type { RootState } from "../store/store";
+
 export function useLeaderboard() {
-  const array = JSON.parse(localStorage.getItem("leaderboard")!) ?? {};
-  return array;
+  return useSelector((state: RootState) => state.leaderboard);
 }
-
-

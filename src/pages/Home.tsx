@@ -5,6 +5,8 @@ import { useDifficultySettings } from "../hooks/gameplay/useDifficultySettings";
 import "./Page.css";
 import "./Home.css";
 import { Link } from "react-router";
+import store from "../store/store";
+import * as difficultySettings from  "../store/difficultySettingsSlice" ;
 
 export default function Home() {
   const difficulty = useDifficultySettings();
@@ -15,13 +17,8 @@ export default function Home() {
   //моя спроба написати debounce
   useEffect(() => {
     const write = setTimeout(() => {
-      localStorage.setItem(
-        "difficulty",
-        JSON.stringify({
-          speed: speed,
-          colorsPerRound: colorCount,
-        })
-      );
+      store.dispatch(difficultySettings.setColorsPerRound(colorCount));
+      store.dispatch(difficultySettings.setSpeed(speed));
       console.log("saved localstorage");
     }, 200);
     return () => {
@@ -31,6 +28,10 @@ export default function Home() {
   }, [speed, colorCount]);
 
   return (
+    <>
+    <div className="absolute top-0 l-0">
+      1
+    </div>
     <div className="fullscreen-centered">
       <div className="justify-center align-middle flex flex-col w-64 gap-8">
         <Title size={4} className="font-bold text-center">
@@ -90,5 +91,6 @@ export default function Home() {
         </div>
       </div>
     </div>
+    </>
   );
 }
