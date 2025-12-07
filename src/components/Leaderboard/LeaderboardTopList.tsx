@@ -1,10 +1,10 @@
 import { Link } from "react-router";
 import { LeaderboardEntryComponent } from "./LeaderboardEntryComponent";
 import Title from "../Title";
-import { useLeaderboard } from "../../hooks/useLeaderboard";
+import { useSortedLeaderboard } from "../../hooks/useSortedLeaderboard";
 import "../../styles/Leaderboard.css";
 export function LeaderboardTopList() {
-  const leaderboard = useLeaderboard();
+  const leaderboard = useSortedLeaderboard();
   return (
     <div className="leaderboard-list">
       <Title size={4}>Leaderboard</Title>

@@ -8,14 +8,18 @@ export function firstGenerateLeaderboard() {
     return;
   }
 
-  localStorage.setItem(
-    "leaderboard",
-    JSON.stringify([...Array(10)].map(() => crypto.randomUUID()))
-  );
+  const ids = [...Array(10)].map(() => crypto.randomUUID());
+
+  const database = {} as any;
+
+  for (const id of ids) {
+    database[id] = entryFromId(id);
+  }
+
+  localStorage.setItem("leaderboard", JSON.stringify(database));
 }
 
-export function entryFromId(id: string = ""): LeaderboardEntry {
-
+function entryFromId(id: string = ""): LeaderboardEntry {
   const random = new SeedRandom(id);
   const entry: Partial<LeaderboardEntry> = {};
 

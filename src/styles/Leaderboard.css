@@ -125,6 +125,7 @@
   background-color: var(--leaderboard-card-bg);
   border: 1rem solid;
   margin: 1rem 0;
+  align-items: center;
 }
 
 .submission-header {

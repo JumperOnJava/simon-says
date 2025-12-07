@@ -4,6 +4,7 @@ import Game from "./pages/Game";
 import Leaderboard from "./pages/Leaderboard";
 import Submission from "./pages/Submission";
 import Submit from "./pages/Submit";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="leaderboard" element={<Leaderboard />} />
         <Route path="submit" element={<Submit />} />
         <Route path="submission/:uuid" element={<Submission />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

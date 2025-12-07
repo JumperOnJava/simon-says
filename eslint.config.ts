@@ -15,7 +15,8 @@ export default defineConfig([
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "off",
       "no-empty": "off",
-      "ts(6133)": "off"
+      "ts(6133)": "off",
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
   tseslint.configs.recommended,
