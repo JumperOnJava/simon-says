@@ -1,0 +1,9 @@
+:root {
+  --modal-bg: oklch(37.2% 0.044 257.287);
+  --modal-text: #ffffff;
+}
+
+.modal-container {
+  background-color: var(--modal-bg);
+  color: var(--modal-text);
+}

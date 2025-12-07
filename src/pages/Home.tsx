@@ -3,6 +3,7 @@ import Button from "../components/Button";
 import Title from "../components/Title";
 import { useDifficultySettings } from "../hooks/gameplay/useDifficultySettings";
 import "./Page.css";
+import "./Home.css";
 import { Link } from "react-router";
 
 export default function Home() {
@@ -36,7 +37,7 @@ export default function Home() {
           Simon Says
         </Title>
 
-        <img src="/simon.png" className="invert" />
+        <img src="/simon.png" className="logo-image" />
 
         <div>
           <Title size={2} className="mb-1">

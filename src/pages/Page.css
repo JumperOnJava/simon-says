@@ -1,7 +1,12 @@
+:root {
+  --fs-bg: #111827;
+  --fs-text: #ffffff;
+}
+
 .fullscreen-centered {
   height: 100vh;
-  background-color: #111827;
-  color: #ffffff;
+  background-color: var(--fs-bg);
+  color: var(--fs-text);
   display: flex;
   justify-content: center;
   align-items: center;

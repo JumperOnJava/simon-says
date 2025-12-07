@@ -1,0 +1,24 @@
+:root {
+  --btn-bg: #0f766e;
+  --btn-bg-hover: #115e59;
+  --btn-bg-active: #134e4a;
+  --btn-text: #ffffff;
+}
+
+.button {
+  border-radius: 0.125rem;
+  background-color: var(--btn-bg);
+  margin: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  color: var(--btn-text);
+  font-family: sans-serif;
+}
+
+.button:hover {
+  background-color: var(--btn-bg-hover);
+}
+
+.button:active {
+  background-color: var(--btn-bg-active);
+}

@@ -2,8 +2,8 @@ import { createPortal } from "react-dom";
 import { useFailedPhase } from "../hooks/gameplay/phase/useFailedPhase";
 import Button from "./Button";
 import Title from "./Title";
-import { useState } from "react";
 import { Link } from "react-router";
+import "./GameOverModal.css"
 
 export function GameOverModal() {
   return createPortal(<GameOverModalInner />, document.body);
@@ -15,7 +15,7 @@ function GameOverModalInner() {
   return (
     <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center flex-col">
       <div className="absolute opacity-30 bg-black top-0 left-0 w-full h-full -z-10 " />
-      <div className="bg-gray-300 p-8">
+      <div className="modal-container p-8">
         <div className="flex flex-col items-center gap-4">
           <Title size={4} className="font-bold">
             Game Over
